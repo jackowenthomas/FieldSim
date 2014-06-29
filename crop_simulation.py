@@ -5,6 +5,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 from radio_button_widget_class import * #Provides the radio button widget
+from manual_grow_dialog_class import * 
 from wheat_class import *
 from potato_class import *
 
@@ -81,7 +82,7 @@ class CropWindow(QMainWindow):
 
         #connections
         self.automatic_grow_button.clicked.connect(self.automatically_grow_crop)
-
+        self.manual_grow_button.clicked.connect(self.manually_grow_crop)
         
 
     def instantiate_crop(self):
@@ -100,6 +101,13 @@ class CropWindow(QMainWindow):
             light = random.randint(1,10)
             water = random.randint(1,10)
             self.simulated_crop.grow(light,water)
+        self.update_crop_view_status()
+
+    def manually_grow_crop(self):
+        manual_values_dialog = ManualGrowDialog()
+        manual_values_dialog.exec_() # run the dialog window
+        light, water = manual_values_dialog.values()
+        self.simulated_crop.grow(light,water)
         self.update_crop_view_status()
 
     def update_crop_view_status(self):
