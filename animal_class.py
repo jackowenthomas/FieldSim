@@ -4,7 +4,7 @@ class Animal:
     """a generic animal"""
 
     #constructor
-    def __init__(self, growth_rate, food_need, water_need):
+    def __init__(self, growth_rate, food_need, water_need, name):
         #set the attributes with an initial value
 
         self._weight = 0
@@ -14,6 +14,7 @@ class Animal:
         self._water_need = water_need
         self._status = "Baby"
         self._type = "Animal"
+        self._name = name
         
         
         
@@ -24,7 +25,7 @@ class Animal:
     #method to report the provide information about the current state of crop
     def report(self):
         #return a dictionary containing the type, status, growth and days growing
-        return {'type':self._type,'status':self._status,'days growing':self._days_growing,'weight':self._weight}
+        return {'name':self._name,'type':self._type,'status':self._status,'days growing':self._days_growing,'weight':self._weight}
 
     def _update_status(self):
         if self._weight > 15:
@@ -36,8 +37,9 @@ class Animal:
         elif self._weight > 1:
             self._status = "Baby"
 
+
     def grow(self,food,water):
-        if food >= self._food_need and water >= self._water_need:
+        if (food >= self._food_need and water >= self._water_need):
             self._weight += self._growth_rate
         #increment days growing
         self._days_growing += 1
@@ -52,6 +54,7 @@ def auto_grow(animal,days):
         food = random.randint(1,100)
         water = random.randint(1,10)
         animal.grow(food,water)
+        
 
 def manual_grow(animal):
     #get the food and water values from the user
@@ -77,6 +80,7 @@ def manual_grow(animal):
             print("Value entered not valid - please enter a value between 1 and 10")
     #grow the crop
     animal.grow(food,water)
+    
 
 def display_menu():
     print("1. Grow manually over 1 day")
@@ -123,7 +127,8 @@ def manage_animal(animal):
     print("Thank you for using the animal management program")
 
 def main():
-    new_animal = Animal(1,4,3)
+    name = None
+    new_animal = Animal(1,4,3, name)
     manage_animal(new_animal)
 
     
@@ -131,7 +136,9 @@ def main():
     
 
 if __name__ == "__main__":
+  
     main()
+    
 
 
         

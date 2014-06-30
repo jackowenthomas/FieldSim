@@ -4,10 +4,10 @@ class Sheep(Animal):
     """A representation of a sheep"""
 
     #constructor
-    def __init__(self):
+    def __init__(self,name):
         #call super class constructor
         #growth rate = 1; food need = 7; water need = 3
-        super().__init__(1,5,7)
+        super().__init__(1,5,7,name)
         self._type = "Sheep"
 
     def grow(self,food,water):
@@ -24,6 +24,7 @@ class Sheep(Animal):
         self._update_status()
 
 def main():
+    name = None
     sheep_animal = Sheep()
     print(sheep_animal.report())
     #manually grow the crop

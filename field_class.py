@@ -41,7 +41,7 @@ class Field:
         for crop in self._crops:
             crop_report.append(crop.report())
         for animal in self._animals:
-            animal_report.append(animal.report(self))
+            animal_report.append(animal.report())
         return {"crops": crop_report, "animals":animal_report}
 
     def report_needs(self):
@@ -77,7 +77,7 @@ class Field:
             #if we have more food available than is required to work out the addition
             #available food
             if food > food_required:
-                addtional_food = food - food_required
+                additional_food = food - food_required
                 food = food_required
             else:
                 additional_food = 0
@@ -98,13 +98,35 @@ class Field:
                     #grow the animal
                     animal.grow(feed,water)
 
+def get_cow_name():
+    valid = False
+    while not valid:
+        name = input("Please enter a name for your cow: ")
+        if len(name) >0:
+            valid = True
+        else:
+            print("A name cannot be blank! Please enter a suitable name")
+        return name
+
+def get_sheep_name():
+    valid = False
+    while not valid:
+        name = input("Please enter a name for your sheep: ")
+        if len(name) >0:
+            valid = True
+        else:
+            print("A name cannot be blank! Please enter a suitable name")
+        return name
+
+
+
 def auto_grow(field,days):
     #grow the field automatically over x days
     for day in range(days):
         light = random.randint(1,10)
         water = random.randint(1,10)
         food = random.randint(1,100)
-    field.grow(light,water,food)
+        field.grow(light,water,food)
 
 def manual_grow(field):
     #get the light, water and food values from the user
@@ -248,6 +270,7 @@ def plant_crop_in_field(field):
     display_crop_menu()
     choice = get_menu_choice(0,2)
     if choice == 1:
+        
         if field.plant_crop(Potato()):
             print()
             print("Crop planted")
@@ -270,7 +293,8 @@ def add_animal_to_field(field):
     display_animal_menu()
     choice = get_menu_choice(0,2)
     if choice == 1:
-        if field.add_animal(Cow):
+        name = get_cow_name()
+        if field.add_animal(Cow(name)):
             print()
             print("Cow added")
             print()
@@ -279,7 +303,8 @@ def add_animal_to_field(field):
             print("Field is full - Cow not added")
             print()
     elif choice == 2:
-        if field.add_animal(Sheep):
+        name = get_sheep_name()
+        if field.add_animal(Sheep(name)):
             print()
             print("Sheep added")
             print()
