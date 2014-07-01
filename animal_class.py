@@ -29,11 +29,11 @@ class Animal:
 
     def _update_status(self):
         if self._weight > 15:
-            self._status = "Old"
+            self._status = "Prime"
         elif self._weight > 10:
-            self._status = "Mature"
+            self._status = "Fine"
         elif self._weight> 5:
-            self._status = "Young"
+            self._status = "Poor"
         elif self._weight > 1:
             self._status = "Baby"
 

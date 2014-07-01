@@ -14,7 +14,7 @@ class Cow(Animal):
         if food >= self._food_need and water >= self._water_need:
             if self._status == "Baby" and water > self._water_need:
                 self._weight += self._growth_rate * 1.8
-            elif self._status == "Young" and water > self._water_need:
+            elif self._status == "Poor" and water > self._water_need:
                 self._weight += self._growth_rate * 1.5
             else:
                 self._weight += self._growth_rate

@@ -14,7 +14,7 @@ class Sheep(Animal):
         if food >= self._food_need and water >= self._water_need:
             if self._status == "Baby" and water > self._water_need:
                 self._weight += self._growth_rate * 1.15
-            elif self._status == "Young" and water > self._water_need:
+            elif self._status == "Poor" and water > self._water_need:
                 self._weight += self._growth_rate * 1.75
             else:
                 self._weight += self._growth_rate
