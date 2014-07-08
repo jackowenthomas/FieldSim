@@ -1,6 +1,6 @@
 from PyQt4.QtGui import *
 
-class FieldItemGraphicPixmapItem(QGraphicsPixmapItem):
+class FieldItemGraphicsPixmapItem(QGraphicsPixmapItem):
     """this class provides a pixmap item with a preset image for the item"""
 
     #constructor

@@ -8,7 +8,7 @@ from graphic_sheep_item_class import *
 
 import field_resources
 
-class FieldGraphicScene(QGraphicsScene):
+class FieldGraphicsScene(QGraphicsScene):
     """this class provides a scene to manage items in the field"""
 
     #constructor
@@ -20,4 +20,4 @@ class FieldGraphicScene(QGraphicsScene):
         self.background_brush = QBrush()
         self.background_picture = QPixmap(":/field_background.png")
         self.background_brush.setTexture(self.background_picture)
-        self.setBackgroundBrish(self.background_brush)
+        self.setBackgroundBrush(self.background_brush)
